@@ -7,8 +7,8 @@ License:	GPL
 Group:		X11/Applications/Multimedia
 Source0:	http://www.gadaud.org/fabrice/xmms-levelmeter.tgz
 URL:		http://membres.lycos.fr/gadaud/fabrice/xmms/
-Requires:	xmms
 BuildRequires:	xmms-devel >= 1.2.3
+Requires:	xmms
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
@@ -18,14 +18,13 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Plugin which draw simple level meter.
 
 %description -l pl
-Wtyczka rysuj±ca prosty wska¼nik poziomu sygan³u.
+Wtyczka rysuj±ca prosty wska¼nik poziomu sygna³u.
 
 %prep
 %setup -q -n SLevel
 %build
 %{__make} \
-	COMMON_CFLAGS="%{rpmcflags} \
-	-ffast-math `glib-config --cflags`"
+	COMMON_CFLAGS="%{rpmcflags} -ffast-math `glib-config --cflags`"
 
 %install
 rm -rf $RPM_BUILD_ROOT
