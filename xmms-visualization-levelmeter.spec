@@ -29,7 +29,7 @@ Wtyczka rysuj±ca prosty wska¼nik poziomu sygna³u.
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT/%{xmms_visualization_plugindir}
 install simplelevel.so $RPM_BUILD_ROOT/%{xmms_visualization_plugindir}
-	
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
