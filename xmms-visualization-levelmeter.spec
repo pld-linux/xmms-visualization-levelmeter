@@ -6,6 +6,7 @@ Release:	1
 License:	GPL
 Group:		X11/Applications/Multimedia
 Source0:	http://www.gadaud.org/fabrice/xmms-levelmeter.tgz
+# Source0-md5:	429241b6af37fe0078b030f2925ba26f
 URL:		http://membres.lycos.fr/gadaud/fabrice/xmms/
 BuildRequires:	xmms-devel >= 1.2.3
 Requires:	xmms
