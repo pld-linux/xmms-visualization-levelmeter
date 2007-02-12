@@ -1,5 +1,5 @@
 Summary:	Plugin which draws simple level meter
-Summary(pl):	Plugin wizualizacji graficznej prostego miernika poziomu
+Summary(pl.UTF-8):   Plugin wizualizacji graficznej prostego miernika poziomu
 Name:		xmms-visualization-levelmeter
 Version:	0.1
 Release:	2
@@ -16,8 +16,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 Plugin which draw simple level meter.
 
-%description -l pl
-Wtyczka rysuj±ca prosty wskaºnik poziomu sygna≥u.
+%description -l pl.UTF-8
+Wtyczka rysujƒÖca prosty wska≈∫nik poziomu sygna≈Çu.
 
 %prep
 %setup -q -n SLevel
