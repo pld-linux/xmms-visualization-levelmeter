@@ -1,5 +1,5 @@
 Summary:	Plugin which draws simple level meter
-Summary(pl.UTF-8):   Plugin wizualizacji graficznej prostego miernika poziomu
+Summary(pl.UTF-8):	Plugin wizualizacji graficznej prostego miernika poziomu
 Name:		xmms-visualization-levelmeter
 Version:	0.1
 Release:	2
