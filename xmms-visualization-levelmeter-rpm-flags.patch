@@ -1,0 +1,43 @@
+Honor RPM compiler and linker flags.
+
+The upstream Makefile hardcodes its own flags and strips on install,
+which breaks debuginfo/debugsource generation in RPM builds.
+
+--- a/Makefile
++++ b/Makefile
+@@ -1,28 +1,29 @@
+ #CC=kgcc
+ 
+-OPTS=-Wall -O2
++CC ?= gcc
++CFLAGS ?= -Wall -O2
++CPPFLAGS ?= `xmms-config --cflags`
+ OBJS=simplelevel.o
+ 
+ XMMS_LIBS=`xmms-config --libs`
+-XMMS_CFLAGS=`xmms-config --cflags`
+ XMMS_VISPLUGINDIR=`xmms-config --visualization-plugin-dir`
+ 
+ all: simplelevel.so
+ 
+ $(OBJS): %.o: %.c
+-	$(CC) $(OPTS) -o $@ -c $< $(XMMS_CFLAGS)
++	$(CC) $(CPPFLAGS) $(CFLAGS) -o $@ -c $<
+ 
+ simplelevel.lo: simplelevel.c
+-	$(CC) $(OPTS) -fPIC -c $< $(XMMS_CFLAGS) -o $@
++	$(CC) $(CPPFLAGS) $(CFLAGS) -fPIC -c $< -o $@
+ 
+ simplelevel.so: simplelevel.lo $(OBJS)
+-	$(CC) -shared -fPIC -o $@ simplelevel.lo  $(XMMS_LIBS)
++	$(CC) $(LDFLAGS) -shared -fPIC -o $@ simplelevel.lo $(XMMS_LIBS)
+ 
+ clean:
+ 	rm -f $(OBJS) simplelevel.so simplelevel.lo
+ 
+ install:
+-	install -s simplelevel.so $(XMMS_VISPLUGINDIR)
++	install simplelevel.so $(XMMS_VISPLUGINDIR)
+ 	cat ./INSTALL.NOTES
+ uninstall:
+ 	rm -f $(XMMS_VISPLUGINDIR)/simplelvel.so

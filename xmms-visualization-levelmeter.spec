@@ -2,11 +2,12 @@ Summary:	Plugin which draws simple level meter
 Summary(pl.UTF-8):	Plugin wizualizacji graficznej prostego miernika poziomu
 Name:		xmms-visualization-levelmeter
 Version:	0.1
-Release:	2
+Release:	3
 License:	GPL
 Group:		X11/Applications/Multimedia
 Source0:	http://www.gadaud.org/fabrice/xmms-levelmeter.tgz
 # Source0-md5:	429241b6af37fe0078b030f2925ba26f
+Patch0:		%{name}-rpm-flags.patch
 URL:		http://membres.lycos.fr/gadaud/fabrice/xmms/
 BuildRequires:	rpmbuild(macros) >= 1.125
 BuildRequires:	xmms-devel >= 1.2.3
@@ -21,9 +22,13 @@ Wtyczka rysująca prosty wskaźnik poziomu sygnału.
 
 %prep
 %setup -q -n SLevel
+%patch -P0 -p1
 %build
 %{__make} \
-	COMMON_CFLAGS="%{rpmcflags} -ffast-math `glib-config --cflags`"
+	CC="%{__cc}" \
+	CFLAGS="%{rpmcflags} -ffast-math" \
+	CPPFLAGS="%{rpmcppflags} `xmms-config --cflags`" \
+	LDFLAGS="%{rpmldflags}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
